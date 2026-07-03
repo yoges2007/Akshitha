@@ -1,4 +1,7 @@
-/* Google Font */
+
+/* ===========================================
+   Google Font & Reset
+=========================================== */
 
 *{
     margin:0;
@@ -14,20 +17,22 @@ body{
     overflow-x:hidden;
 }
 
-/* Animated Background */
+/* Background Animation */
 
 @keyframes bgMove{
     0%{background-position:left;}
     100%{background-position:right;}
 }
 
-/* Main Card */
+/* ===========================================
+   Main Welcome Card
+=========================================== */
 
 .container{
     width:90%;
     max-width:700px;
     margin:40px auto;
-    background:rgba(255,255,255,.7);
+    background:rgba(255,255,255,.75);
     backdrop-filter:blur(10px);
     border-radius:20px;
     padding:30px;
@@ -42,13 +47,13 @@ body{
 }
 
 .container h2{
-    color:#444;
     margin:20px 0;
+    color:#444;
 }
 
 .container p{
     color:#555;
-    line-height:1.7;
+    line-height:1.8;
 }
 
 /* Baby Image */
@@ -56,9 +61,9 @@ body{
 .baby{
     width:250px;
     border-radius:20px;
-    border:6px solid white;
+    border:6px solid #fff;
     box-shadow:0 8px 20px rgba(0,0,0,.2);
-    transition:.5s;
+    transition:.4s;
 }
 
 .baby:hover{
@@ -74,8 +79,8 @@ button{
     border-radius:30px;
     background:#ff4d88;
     color:white;
-    cursor:pointer;
     font-size:17px;
+    cursor:pointer;
     transition:.3s;
 }
 
@@ -84,13 +89,26 @@ button:hover{
     transform:scale(1.08);
 }
 
-/* Family */
+#wish{
+    margin-top:20px;
+    color:#ff0066;
+    font-size:22px;
+}
+
+/* ===========================================
+   Parents Section
+=========================================== */
 
 .family{
     width:90%;
     max-width:900px;
-    margin:50px auto;
+    margin:60px auto;
     text-align:center;
+}
+
+.family h2{
+    color:#ff4d88;
+    margin-bottom:25px;
 }
 
 .cards{
@@ -102,7 +120,7 @@ button:hover{
 
 .card{
     width:220px;
-    background:white;
+    background:#fff;
     border-radius:20px;
     padding:20px;
     box-shadow:0 8px 20px rgba(0,0,0,.15);
@@ -118,13 +136,18 @@ button:hover{
     border-radius:15px;
 }
 
-/* ===========================
+.card h3{
+    margin-top:15px;
+    color:#444;
+}
+
+/* ===========================================
    Baby Slideshow
-=========================== */
+=========================================== */
 
 .gallery{
     text-align:center;
-    margin:60px auto;
+    margin:70px auto;
 }
 
 .gallery h2{
@@ -133,54 +156,39 @@ button:hover{
 }
 
 .slideshow{
-
     position:relative;
-
     width:420px;
     height:500px;
-
     margin:auto;
-
     overflow:hidden;
-
     border-radius:20px;
-
-    background:#fff;
-
+    background:white;
     box-shadow:0 8px 25px rgba(0,0,0,.25);
-
 }
 
 .slide{
-
     position:absolute;
-
-    width:100%;
-    height:100%;
-
     top:0;
     left:0;
-
-    object-fit:contain;   /* Full image */
-
+    width:100%;
+    height:100%;
+    object-fit:contain;
     background:white;
-
     opacity:0;
-
     transition:opacity 1s ease;
-
 }
-
 
 .slide.active{
-
     opacity:1;
-
+    z-index:10;
 }
 
-/* Couple Slideshow */
+/* ===========================================
+   Couple Slideshow
+=========================================== */
 
 .couple-gallery{
+    display:none;
     text-align:center;
     margin:70px auto;
 }
@@ -188,58 +196,44 @@ button:hover{
 .couple-gallery h2{
     color:#ff4d88;
     margin-bottom:20px;
-    font-size:32px;
+    font-size:30px;
 }
 
 .couple-slideshow{
-
+    position:relative;
     width:420px;
     height:500px;
-
     margin:auto;
-
-    position:relative;
-
     overflow:hidden;
-
     border-radius:20px;
-
-    background:#fff;
-
-    box-shadow:0 10px 25px rgba(0,0,0,.25);
-
+    background:white;
+    box-shadow:0 8px 25px rgba(0,0,0,.25);
 }
 
 .couple-slide{
-
     position:absolute;
-
-    width:100%;
-    height:100%;
-
     top:0;
     left:0;
-
+    width:100%;
+    height:100%;
     object-fit:contain;
-
+    background:white;
     opacity:0;
-
-    transition:opacity 1s ease-in-out;
-
+    transition:opacity 1s ease;
 }
 
-.active-couple{
-
+.couple-slide.active-couple{
     opacity:1;
-
+    z-index:10;
 }
-
-/* Wishes */
+/* ===========================================
+   Wishes Section
+=========================================== */
 
 .wishes{
     width:90%;
     max-width:700px;
-    margin:50px auto;
+    margin:60px auto;
     background:white;
     border-radius:20px;
     padding:30px;
@@ -247,36 +241,66 @@ button:hover{
     box-shadow:0 8px 20px rgba(0,0,0,.15);
 }
 
-/* Music */
-
-.music{
-    text-align:center;
-    margin:30px;
+.wishes h2{
+    color:#ff4d88;
+    margin-bottom:20px;
 }
 
-/* Footer */
+.wishes p{
+    font-size:20px;
+    line-height:2;
+    color:#555;
+}
+
+/* ===========================================
+   Footer
+=========================================== */
 
 footer{
     text-align:center;
     padding:25px;
     color:#444;
     font-weight:bold;
+    font-size:18px;
 }
 
-/* Floating Hearts */
+/* ===========================================
+   Floating Hearts
+=========================================== */
 
 .hearts span{
     position:fixed;
-    bottom:-50px;
+    bottom:-60px;
     font-size:30px;
     animation:floatHeart 8s linear infinite;
+    pointer-events:none;
+    z-index:999;
 }
 
-.hearts span:nth-child(1){left:10%;animation-delay:0s;}
-.hearts span:nth-child(2){left:30%;animation-delay:2s;}
-.hearts span:nth-child(3){left:50%;animation-delay:4s;}
-.hearts span:nth-child(4){left:70%;animation-delay:1s;}
-.hearts span:nth-child(5){left:90%;animation-delay:3s;}
+.hearts span:nth-child(1){
+    left:10%;
+    animation-delay:0s;
+}
+
+.hearts span:nth-child(2){
+    left:30%;
+    animation-delay:2s;
+}
+
+.hearts span:nth-child(3){
+    left:50%;
+    animation-delay:4s;
+}
+
+.hearts span:nth-child(4){
+    left:70%;
+    animation-delay:1s;
+}
+
+.hearts span:nth-child(5){
+    left:90%;
+    animation-delay:3s;
+}
 
 @keyframes floatHeart{
 
@@ -292,13 +316,17 @@ footer{
 
 }
 
-/* Balloons */
+/* ===========================================
+   Balloons
+=========================================== */
 
 .balloons{
     position:fixed;
     width:100%;
     height:100%;
     pointer-events:none;
+    top:0;
+    left:0;
 }
 
 .balloon{
@@ -345,7 +373,9 @@ footer{
 
 }
 
-/* Fade */
+/* ===========================================
+   Fade Animation
+=========================================== */
 
 @keyframes fadeDown{
 
@@ -361,26 +391,58 @@ footer{
 
 }
 
-/* Mobile */
+/* ===========================================
+   Mobile Responsive
+=========================================== */
 
-@media(max-width:768px){
+@media (max-width:768px){
 
-.cards{
-    flex-direction:column;
-    align-items:center;
-}
+    .container{
+        width:95%;
+        padding:20px;
+    }
 
-.photos img{
-    width:150px;
-    height:150px;
-}
+    .baby{
+        width:180px;
+    }
 
-.baby{
-    width:200px;
-}
+    .cards{
+        flex-direction:column;
+        align-items:center;
+    }
 
-.container{
-    padding:20px;
-}
+    .card{
+        width:90%;
+        max-width:280px;
+    }
+
+    .slideshow,
+    .couple-slideshow{
+        width:95%;
+        max-width:340px;
+        height:420px;
+    }
+
+    .gallery h2,
+    .couple-gallery h2{
+        font-size:24px;
+    }
+
+    .wishes{
+        width:95%;
+    }
+
+    .wishes p{
+        font-size:18px;
+    }
+
+    button{
+        width:90%;
+        max-width:280px;
+    }
+
+    footer{
+        font-size:16px;
+    }
 
 }
