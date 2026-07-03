@@ -1,0 +1,386 @@
+/* Google Font */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:linear-gradient(-45deg,#ffd6e8,#d6f3ff,#fff6c7,#f6d8ff);
+    background-size:400% 400%;
+    animation:bgMove 10s infinite alternate;
+    overflow-x:hidden;
+}
+
+/* Animated Background */
+
+@keyframes bgMove{
+    0%{background-position:left;}
+    100%{background-position:right;}
+}
+
+/* Main Card */
+
+.container{
+    width:90%;
+    max-width:700px;
+    margin:40px auto;
+    background:rgba(255,255,255,.7);
+    backdrop-filter:blur(10px);
+    border-radius:20px;
+    padding:30px;
+    text-align:center;
+    box-shadow:0 10px 30px rgba(0,0,0,.2);
+}
+
+.container h1{
+    color:#ff4d88;
+    margin-bottom:20px;
+    animation:fadeDown 1s;
+}
+
+.container h2{
+    color:#444;
+    margin:20px 0;
+}
+
+.container p{
+    color:#555;
+    line-height:1.7;
+}
+
+/* Baby Image */
+
+.baby{
+    width:250px;
+    border-radius:20px;
+    border:6px solid white;
+    box-shadow:0 8px 20px rgba(0,0,0,.2);
+    transition:.5s;
+}
+
+.baby:hover{
+    transform:scale(1.05);
+}
+
+/* Button */
+
+button{
+    margin-top:25px;
+    padding:12px 28px;
+    border:none;
+    border-radius:30px;
+    background:#ff4d88;
+    color:white;
+    cursor:pointer;
+    font-size:17px;
+    transition:.3s;
+}
+
+button:hover{
+    background:#ff0066;
+    transform:scale(1.08);
+}
+
+/* Family */
+
+.family{
+    width:90%;
+    max-width:900px;
+    margin:50px auto;
+    text-align:center;
+}
+
+.cards{
+    display:flex;
+    justify-content:center;
+    gap:30px;
+    flex-wrap:wrap;
+}
+
+.card{
+    width:220px;
+    background:white;
+    border-radius:20px;
+    padding:20px;
+    box-shadow:0 8px 20px rgba(0,0,0,.15);
+    transition:.4s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+}
+
+.card img{
+    width:100%;
+    border-radius:15px;
+}
+
+/* ===========================
+   Baby Slideshow
+=========================== */
+
+.gallery{
+    text-align:center;
+    margin:60px auto;
+}
+
+.gallery h2{
+    color:#ff4d88;
+    margin-bottom:20px;
+}
+
+.slideshow{
+
+    position:relative;
+
+    width:420px;
+    height:500px;
+
+    margin:auto;
+
+    overflow:hidden;
+
+    border-radius:20px;
+
+    background:#fff;
+
+    box-shadow:0 8px 25px rgba(0,0,0,.25);
+
+}
+
+.slide{
+
+    position:absolute;
+
+    width:100%;
+    height:100%;
+
+    top:0;
+    left:0;
+
+    object-fit:contain;   /* Full image */
+
+    background:white;
+
+    opacity:0;
+
+    transition:opacity 1s ease;
+
+}
+
+
+.slide.active{
+
+    opacity:1;
+
+}
+
+/* Couple Slideshow */
+
+.couple-gallery{
+    text-align:center;
+    margin:70px auto;
+}
+
+.couple-gallery h2{
+    color:#ff4d88;
+    margin-bottom:20px;
+    font-size:32px;
+}
+
+.couple-slideshow{
+
+    width:420px;
+    height:500px;
+
+    margin:auto;
+
+    position:relative;
+
+    overflow:hidden;
+
+    border-radius:20px;
+
+    background:#fff;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.25);
+
+}
+
+.couple-slide{
+
+    position:absolute;
+
+    width:100%;
+    height:100%;
+
+    top:0;
+    left:0;
+
+    object-fit:contain;
+
+    opacity:0;
+
+    transition:opacity 1s ease-in-out;
+
+}
+
+.active-couple{
+
+    opacity:1;
+
+}
+
+/* Wishes */
+
+.wishes{
+    width:90%;
+    max-width:700px;
+    margin:50px auto;
+    background:white;
+    border-radius:20px;
+    padding:30px;
+    text-align:center;
+    box-shadow:0 8px 20px rgba(0,0,0,.15);
+}
+
+/* Music */
+
+.music{
+    text-align:center;
+    margin:30px;
+}
+
+/* Footer */
+
+footer{
+    text-align:center;
+    padding:25px;
+    color:#444;
+    font-weight:bold;
+}
+
+/* Floating Hearts */
+
+.hearts span{
+    position:fixed;
+    bottom:-50px;
+    font-size:30px;
+    animation:floatHeart 8s linear infinite;
+}
+
+.hearts span:nth-child(1){left:10%;animation-delay:0s;}
+.hearts span:nth-child(2){left:30%;animation-delay:2s;}
+.hearts span:nth-child(3){left:50%;animation-delay:4s;}
+.hearts span:nth-child(4){left:70%;animation-delay:1s;}
+.hearts span:nth-child(5){left:90%;animation-delay:3s;}
+
+@keyframes floatHeart{
+
+    0%{
+        transform:translateY(0);
+        opacity:1;
+    }
+
+    100%{
+        transform:translateY(-110vh);
+        opacity:0;
+    }
+
+}
+
+/* Balloons */
+
+.balloons{
+    position:fixed;
+    width:100%;
+    height:100%;
+    pointer-events:none;
+}
+
+.balloon{
+    width:45px;
+    height:60px;
+    border-radius:50%;
+    position:absolute;
+    bottom:-100px;
+    animation:balloon 12s linear infinite;
+}
+
+.red{
+    background:#ff4d4d;
+    left:10%;
+}
+
+.blue{
+    background:#4da6ff;
+    left:35%;
+    animation-delay:2s;
+}
+
+.yellow{
+    background:#ffd633;
+    left:60%;
+    animation-delay:4s;
+}
+
+.pink{
+    background:#ff66cc;
+    left:85%;
+    animation-delay:6s;
+}
+
+@keyframes balloon{
+
+    from{
+        bottom:-100px;
+    }
+
+    to{
+        bottom:110%;
+    }
+
+}
+
+/* Fade */
+
+@keyframes fadeDown{
+
+    from{
+        opacity:0;
+        transform:translateY(-30px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+/* Mobile */
+
+@media(max-width:768px){
+
+.cards{
+    flex-direction:column;
+    align-items:center;
+}
+
+.photos img{
+    width:150px;
+    height:150px;
+}
+
+.baby{
+    width:200px;
+}
+
+.container{
+    padding:20px;
+}
+
+}
