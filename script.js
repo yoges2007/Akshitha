@@ -1,169 +1,121 @@
-// ===============================
-// Welcome Baby Website Script
-// ===============================
+
+// ==========================
+// Sequential Slideshows
+// ==========================
+
+const babySlides = document.querySelectorAll(".slide");
+const coupleSlides = document.querySelectorAll(".couple-slide");
 
 const surpriseBtn = document.getElementById("surpriseBtn");
-const wish = document.getElementById("wish");
 const song = document.getElementById("song");
+const wish = document.getElementById("wish");
 
-// Baby Slideshow
-const slides = document.querySelectorAll(".slide");
-let currentSlide = 0;
-let babyStarted = false;
-
-// Couple Slideshow
-const coupleSlides = document.querySelectorAll(".couple-slide");
+let babyIndex = 0;
 let coupleIndex = 0;
-let coupleStarted = false;
 
-// ------------------------------
-// Baby Slide
-// ------------------------------
+let babyInterval = null;
+let coupleInterval = null;
 
-function showSlide(){
+let started = false;
 
-    slides.forEach(slide=>{
-        slide.classList.remove("active");
-    });
+// Hide Couple Gallery Initially
+document.querySelector(".couple-gallery").style.display = "none";
 
-    slides[currentSlide].classList.add("active");
+// --------------------
+// Baby Slideshow
+// --------------------
 
-    currentSlide++;
+function showBabySlide() {
 
-    if(currentSlide >= slides.length){
-        currentSlide = 0;
+    babySlides.forEach(slide => slide.classList.remove("active"));
+
+    babySlides[babyIndex].classList.add("active");
+
+    babyIndex++;
+
+    // Baby slideshow completed
+    if (babyIndex >= babySlides.length) {
+
+        clearInterval(babyInterval);
+
+        setTimeout(() => {
+
+            document.querySelector(".gallery").style.display = "none";
+            document.querySelector(".couple-gallery").style.display = "block";
+
+            coupleIndex = 0;
+
+            // First Couple Image
+            showCoupleSlide();
+
+            coupleInterval = setInterval(showCoupleSlide, 3000);
+
+        }, 3000);
+
     }
 
 }
 
-// ------------------------------
-// Couple Slide
-// ------------------------------
+// --------------------
+// Couple Slideshow
+// --------------------
 
-function changeCoupleSlide(){
+function showCoupleSlide() {
 
-    coupleSlides.forEach(slide=>{
-        slide.classList.remove("active-couple");
-    });
+    coupleSlides.forEach(slide => slide.classList.remove("active-couple"));
 
     coupleSlides[coupleIndex].classList.add("active-couple");
 
     coupleIndex++;
 
-    if(coupleIndex >= coupleSlides.length){
-        coupleIndex = 0;
+    // Couple slideshow completed
+    if (coupleIndex >= coupleSlides.length) {
+
+        clearInterval(coupleInterval);
+
+        setTimeout(() => {
+
+            document.querySelector(".couple-gallery").style.display = "none";
+            document.querySelector(".gallery").style.display = "block";
+
+            babyIndex = 0;
+
+            showBabySlide();
+
+            babyInterval = setInterval(showBabySlide, 3000);
+
+        }, 3000);
+
     }
 
 }
 
-// ------------------------------
+// --------------------
 // Surprise Button
-// ------------------------------
+// --------------------
 
-surpriseBtn.addEventListener("click",()=>{
+surpriseBtn.addEventListener("click", () => {
 
-    // Music
+    if (started) return;
+
+    started = true;
+
     song.play();
 
-    // Message
-    wish.innerHTML=`
-    🎉 <b>Welcome to the World, Little Angel 👶❤️</b><br><br>
-    Wishing you a lifetime filled with happiness,
-    love and blessings.
-    `;
+    wish.innerHTML = "🎉 <b>Welcome to the World, Little Angel 👶❤️</b>";
 
-    // Confetti
     confetti({
-        particleCount:250,
-        spread:180,
-        origin:{y:0.6}
+        particleCount: 250,
+        spread: 180,
+        origin: { y: 0.6 }
     });
 
-    // Button
-    surpriseBtn.innerHTML="🎊 Congratulations!";
-    surpriseBtn.style.background="#28a745";
+    surpriseBtn.innerHTML = "🎊 Congratulations!";
 
-    // Baby Slideshow
-    if(!babyStarted){
+    babyIndex = 0;
 
-        babyStarted=true;
+    showBabySlide();
 
-        showSlide();
-
-        setInterval(showSlide,3000);
-
-    }
-
-    // Couple Slideshow
-    if(!coupleStarted){
-
-        coupleStarted=true;
-
-        changeCoupleSlide();
-
-        setInterval(changeCoupleSlide,3000);
-
-    }
+    babyInterval = setInterval(showBabySlide, 3000);
 
 });
-
-// ------------------------------
-// Floating Hearts
-// ------------------------------
-
-setInterval(()=>{
-
-    let heart=document.createElement("span");
-
-    heart.innerHTML="💖";
-
-    heart.style.position="fixed";
-    heart.style.left=Math.random()*100+"vw";
-    heart.style.bottom="-30px";
-    heart.style.fontSize=(20+Math.random()*20)+"px";
-    heart.style.animation="floatHeart 6s linear";
-    heart.style.zIndex="9999";
-
-    document.body.appendChild(heart);
-
-    setTimeout(()=>{
-        heart.remove();
-    },6000);
-
-},1000);
-
-// ------------------------------
-// Scroll Animation
-// ------------------------------
-
-const sections=document.querySelectorAll("section");
-
-sections.forEach(section=>{
-
-    section.style.opacity="0";
-    section.style.transform="translateY(50px)";
-    section.style.transition="1s";
-
-});
-
-function revealSections(){
-
-    sections.forEach(section=>{
-
-        const top=section.getBoundingClientRect().top;
-
-        if(top<window.innerHeight-100){
-
-            section.style.opacity="1";
-            section.style.transform="translateY(0)";
-
-        }
-
-    });
-
-}
-
-window.addEventListener("scroll",revealSections);
-window.addEventListener("load",revealSections);
-
-console.log("👶 Baby Website Loaded");
